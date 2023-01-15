@@ -1,0 +1,25 @@
+{
+    "properties": {
+        "movie_id": {
+            "type": "integer"
+        },
+        "director_id": {
+            "type": "string"
+        },
+        "director_name": {
+            "type": "string"
+        },
+        "director_canonical_url": {
+            "type": "string"
+        },
+        "_extracted_at": {
+            "type": "string"
+        },
+        "_sdc_id": {
+            "type": "string"
+        },
+        "_sdc_source_key_id": {
+            "type": "string"
+        }
+    }
+}

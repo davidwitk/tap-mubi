@@ -1,0 +1,28 @@
+{
+    "properties": {
+        "movie_id": {
+            "type": "integer"
+        },
+        "movie_title": {
+            "type": "string"
+        },
+        "movie_title_locale": {
+            "type": "string"
+        },
+        "movie_canonical_url": {
+            "type": "string"
+        },
+        "movie_year": {
+            "type": "integer"
+        },
+        "movie_popularity": {
+            "type": "integer"
+        },
+        "_extracted_at": {
+            "type": "string"
+        },
+        "_sdc_id": {
+            "type": "string"
+        }
+    }
+}

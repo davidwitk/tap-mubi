@@ -1,0 +1,34 @@
+{
+    "properties": {
+        "movie_id": {
+            "type": "integer"
+        },
+        "movie_rank": {
+            "type": "integer"
+        },
+        "list_id": {
+            "type": "integer"
+        },
+        "list_user_id": {
+            "type": "integer"
+        },
+        "list_created_at": {
+            "type": "integer"
+        },
+        "list_updated_at": {
+            "type": "integer"
+        },
+        "list_title_locale": {
+            "type": "string"
+        },
+        "list_canonical_url": {
+            "type": "string"
+        },
+        "_extracted_at": {
+            "type": "string"
+        },
+        "_sdc_id": {
+            "type": "string"
+        }
+    }
+}
