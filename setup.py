@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 import os
 from setuptools import setup, Command, find_packages
+from glob import glob
+
+data = glob('schemas/*.json')
 
 setup(
     name='tap-mubi',
@@ -24,9 +27,10 @@ setup(
         'six==1.16.0',
         'urllib3==1.26.14'
 	],
-    packages=find_packages(),
+    packages=["tap_mubi"],
+    package_dir={"tap_mubi": "tap_mubi"},
+    package_data={'tap_mubi': ['schemas/*.json']},
 	entry_points={
         'console_scripts': ['tap-mubi=tap_mubi:main']
-        },
-	include_package_data=True
+        }
 )

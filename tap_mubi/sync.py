@@ -13,8 +13,7 @@ def _get_abs_path(path):
     return os.path.join(os.path.dirname(os.path.realpath(__file__)), path)
 
 def get_schema(file_name):
-    #path = _get_abs_path("schemas") + "/" + file_name
-    path = '/Users/davidwitkowski/Development/projects/tap-mubi/tap_mubi/schemas' + "/" + file_name
+    path = _get_abs_path("schemas") + "/" + file_name
     with open(path) as file:
         return json.load(file)
 
@@ -126,7 +125,7 @@ def sync_movie_data(list_id):
 
     # Movie Details
     stream = "top_movies__details"
-    schema = get_schema(stream + ".json")
+    schema = get_schema(stream)
     singer.write_schema(stream, schema, "_sdc_id")
     singer.write_records(stream, movie_details)
     
