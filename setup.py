@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 import os
 from setuptools import setup, Command, find_packages
-from glob import glob
-
-data = glob('schemas/*.json')
 
 setup(
     name='tap-mubi',
