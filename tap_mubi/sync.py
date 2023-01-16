@@ -125,7 +125,7 @@ def sync_movie_data(list_id):
 
     # Movie Details
     stream = "top_movies__details"
-    schema = get_schema(stream)
+    schema = get_schema(stream + ".json")
     singer.write_schema(stream, schema, "_sdc_id")
     singer.write_records(stream, movie_details)
     
