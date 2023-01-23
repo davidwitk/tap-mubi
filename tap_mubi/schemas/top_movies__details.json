@@ -18,6 +18,9 @@
         "movie_popularity": {
             "type": "integer"
         },
+        "movie_directors": {
+            "type": "string"
+        },
         "_extracted_at": {
             "type": "string"
         },
