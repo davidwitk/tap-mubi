@@ -72,6 +72,8 @@ def get_movie_data(list_id):
 
                 movie_data = json.loads(res.text)
 
+                logger.info(f"Got data for {url}: {movie_data}")
+
                 data = {
                     "movie_id": int(film),
                     "movie_title": movie_data["title"],
