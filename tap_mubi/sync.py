@@ -3,11 +3,34 @@ import json
 import singer
 import datetime
 import time
-import os 
+import os
+import sys
 
 BASE_URL = "https://mubi.com/services/api/"
 
 logger = singer.get_logger()
+
+#### Overriding Singer method format_message
+
+# Because of an encoding issue, we need to overwrite the standard Singer method format_message (which is later used in write_records).
+# With the option ensure_ascii=False, we ensure that special characters are formatted correctly, e.g. Céline instead of C\u00e9line.
+# Reason is unclear. Cf. this issue: https://github.com/singer-io/singer-python/issues/64.
+def _format_message(message):
+    return json.dumps(message.asdict(), ensure_ascii=False)
+
+def _write_message(message):
+    sys.stdout.write(_format_message(message) + '\n')
+    sys.stdout.flush()
+
+def _write_record(stream_name, record, stream_alias=None, time_extracted=None):
+    _write_message(singer.RecordMessage(stream=(stream_alias or stream_name),
+                                record=record,
+                                time_extracted=time_extracted))
+def _write_records(stream_name, records):
+    for record in records:
+        _write_record(stream_name, record)
+
+##### End overriding format_message
 
 def _get_abs_path(path):
     return os.path.join(os.path.dirname(os.path.realpath(__file__)), path)
@@ -104,6 +127,7 @@ def get_movie_data(list_id):
                 continue
             break
 
+
     return movies
 
 def sync_movie_data(list_id):
@@ -111,5 +135,5 @@ def sync_movie_data(list_id):
     stream = "top_movies__details"
     schema = get_schema(stream + ".json")
     singer.write_schema(stream, schema, "_sdc_id")
-    singer.write_records(stream, movie_data)
+    _write_records(stream, movie_data)
     
