@@ -11,7 +11,7 @@ setup(
 	py_modules=["tap_mubi"],
 	install_requires=[
         'backoff==1.8.0',
-        'certifi==2022.12.7',
+        'certifi==2023.7.22',
         'charset-normalizer==3.0.1',
         'ciso8601==2.3.0',
         'idna==3.4',
