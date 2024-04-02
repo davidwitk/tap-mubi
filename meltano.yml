@@ -1,0 +1,47 @@
+version: 1
+default_environment: prod
+project_id: 82e22c4f-54e1-4932-b394-4689151b741f
+
+
+######################
+#### ENVIRONMENTS ####
+######################
+
+environments:
+- name: dev
+- name: prod
+
+
+#################
+#### PLUGINS ####
+#################
+
+plugins:
+
+#### EXTRACTORS ####
+
+  extractors:
+
+  # Mubi
+  - name: tap-mubi
+    namespace: tap_mubi
+    pip_url: git+https://github.com/chodera/tap-mubi.git
+    executable: tap-mubi
+
+#### LOADERS ####
+
+  loaders:
+
+  # Postgres Default
+  - name: target-postgres
+    variant: transferwise
+    pip_url: pipelinewise-target-postgres
+    config:
+      host: ${POSTGRES_HOST}
+      port: 5432
+      user: ${POSTGRES_USER}
+      password: ${POSTGRES_PASSWORD}
+      dbname: ${POSTGRES_DBNAME}
+      batch_size_rows: 1000
+      add_metadata_columns: true
+      default_target_schema: raw_mubi
