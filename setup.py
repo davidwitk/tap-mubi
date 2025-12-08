@@ -22,7 +22,7 @@ setup(
         'simplejson==3.11.1',
         'singer-python==5.13.0',
         'six==1.16.0',
-        'urllib3==2.5.0'
+        'urllib3==2.6.0'
 	],
     packages=["tap_mubi"],
     package_dir={"tap_mubi": "tap_mubi"},
